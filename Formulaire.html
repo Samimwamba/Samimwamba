@@ -1,0 +1,338 @@
+<html>
+<head>
+	<title>ESSAIE</title>
+	<meta charset="utf-8">
+</head>
+
+<style type="text/css">
+	
+	@font-face{
+
+		font-family: headFont;
+		src: url(ui/fonts/Summer-Vibes-OTF.otf);
+	}
+
+	@font-face{
+
+		font-family: myFont;
+		src: url(ui/fonts/OpenSans-Regular.ttf);
+	}
+
+	body{
+		margin: 2px;
+		background-color: rgb(0 0 0 / 40%);
+	}
+
+	#wrapper{
+
+		max-width:900px;
+		min-height: 500px;
+		margin: auto;
+		font-family: myFont;
+		font-size: 13px;
+		background-color: rgb(0 0 0 / 10%);
+		width: 1000px;
+		box-shadow:  0px 0px 3px 3px   rgba(0 0 0 /80%);
+		
+		
+		
+	}
+
+	form{
+
+		margin: 10x;
+		padding: 10px;
+		width:100%;
+		max-width: 400px;
+		margin-bottom: 100px;
+		border: none;
+
+	}
+
+	input[type=text],input[type=submit],input[type=date]{
+
+		padding:10px;
+		margin: 5px;
+		width:100%;
+		border-radius: 5px;
+		border:solid 1px #410606;
+	}
+	
+	.naissance{
+
+		padding: 5px;
+	}
+	
+	.promo{
+
+		padding: 5px;
+	}
+	
+	.fac{
+
+		padding: 5px;
+		padding-left: 33%;
+	}
+	
+	#pro{
+		
+		width: 44%;
+	}
+
+	select{
+
+		padding:10px;
+		margin: 10px;
+		width:27.7%;
+		border-radius: 5px;
+		border:solid 1px #410606;
+	}
+	
+
+	#button{
+
+		width: 100%;
+		cursor: pointer;
+		background-color: #410606;
+		color: white;
+		margin-right: 80px;
+	}
+
+		
+	
+
+	#header{
+
+		background-color: #410606;
+		font-size: 25px;
+		text-align: center;
+		font-family: headFont;
+		width: 71.5%;
+		color: white;
+		margin-left: 180px;
+		box-shadow:  0px 0px 3px 3px   rgba(0 0 0 /80%);
+	}
+
+	
+	#error{
+
+		text-align: center;
+		align-self: auto;
+		padding: 0.5em;
+		background-color: #ecaf91;
+		color: white;
+		display: none;
+	}
+    
+	#videoElement{
+
+		position: relative;
+		width: 387px;
+		height: 290px;
+		background-color: rgba(0 0 0 /20%);
+		margin-left: 100px;
+		bottom: -100px;
+		box-shadow: 3px 2px 3px 2px rgba(0 0 0 /80%);
+		
+		
+	
+		
+	}
+	#capture{
+		position: absolute;
+		cursor: pointer;
+		color: white;
+		width: 387px;
+		background: rgba(94, 4, 4, 0.5);
+		height: 0px;
+	    padding-top: 6px;
+		padding-bottom: 25px;
+		right: 728px;
+		bottom: 340px;
+		font-family:  cursive;
+		
+	
+}
+	#affiche{
+		display: inline-block;
+		margin-left: -45px;
+		justify-content: center;
+
+	}
+	#canvas{
+
+
+width: 387px;
+height: 290px;
+background-color: rgba(0 0 0 /20%);
+margin-left: 500px;
+margin-top: -190px;
+box-shadow: 3px 2px 3px 2px rgba(0 0 0 /80%) ;
+}
+#myform{
+	justify-content: center;
+	margin: auto;
+	
+}
+#border{
+	border: none;
+	border-bottom: 1px solid rgb(41, 06, 06);
+	background: none;
+}
+#radio{
+	color: black;
+}
+
+
+   
+</style>
+<body>
+    <div id="header">
+		
+		Enregistrement 
+		<div style="font-size: 20px;font-family: myFont;">Etudiant</div>
+		</div>
+
+	<div id="wrapper">
+ 
+ 		
+ 		<div id="error" >some text</div>
+		 <div  id="affiche"  >
+			<video autoplay="true" id="videoElement"></video>
+			<button onclick="capture()" id="capture">Capture</button>
+			<canvas  id="canvas" name="canvas"><br></canvas>
+			<p id="printresul"></p>
+			<img src="" alt="">
+		</div>
+		
+		<form    action="test.php" method="POST" id="myform">
+
+			<input id="border" type="text" name="nom" placeholder="Nom"><br>
+			<input id="border" type="text" name="post" placeholder="Post-nom"><br>
+			<input id="border" type="text" name="prenom" placeholder="Prenom"><br>
+            <select id="border" name="promotion" id="pro">
+                <option  value="" id="date" >Promotion</option>
+				<option  value="Bac 1"  >Bac 1</option>
+				<option  value="Bac 2" >Bac 2</option>
+				<option  value="Bac 3" >Bac 3</option>
+            </select>
+            <select id="border" name="faculte" id="pro">
+                <option value="">Faculté</option>
+				<option  value="Sciences Informatiques">Sciences Informatiques</option>
+				<option  value="Sciences commerciales et financieres">Sciences commerciales et financieres</option>
+				<option  value="Arts et metiers">Arts et metiers </option>
+				<option  value="Sciences Appliquées" >Sciences Appliquées</option>
+				<option  value="Techniques Medicales">Techniques Medicales</option>
+				<option  value="Tourisme,Hotelerie,Restauration">Tourisme,Hotelerie,Restauration</option>
+                <option  value="Environnement et Gestion des Ressources Naturelles" >Environnement et Gestion des Ressources Naturelles</option>
+				<option  value="Sciences de l'information et de la communication(SIC)" >Sciences de l'information et de la communication(SIC)</option>
+				<option  value="Architecture">Architecture</option>
+            </select>
+			<div id="radio" style="padding: 5px;">
+				Genre:<br>
+				<input id="border" type="radio" value="Homme" name="gender"> Homme
+				<input id="border" type="radio" value="Femme" name="gender"> Femme
+				<br>  <br>
+				Frais Académique :<br> <br>
+				<input id="border" type="radio" value="Première tranche" name="tranche1"> Première tranche
+				<input id="border" type="radio" value="Deuxième tranche " name="tranche1"> Deuxième tranche
+				<br>  <br>
+				Frais Connexe :<br> <br>
+				<input id="border" type="radio" value="Première tranche" name="tranche2"> Première tranche
+				<input id="border" type="radio" value="Deuxième tranche " name="tranche2"> Deuxième tranche
+				<br>  <br>
+				Frais Examen:<br> <br>
+				<input id="border" type="radio" value="Première tranche" name="tranche3"> Premier Semestre
+				<input id="border" type="radio" value="Deuxième tranche " name="tranche3"> Deuxième Semestre
+			</div>
+			<input  type="submit" value="Enregister" id="button" name="sauver" onclick="sauver()"><br>
+			<br>
+ 			<a href="Acceuil.html" style="display: block;color:#ffffff;text-align: center;text-decoration: none;">
+ 				Acceuil
+ 			</a>
+			
+			</div>
+		</form>
+		
+					
+		<script>
+			
+			
+                    navigator.getUserMedia =
+                    navigator.getUserMedia ||
+                    navigator.webkitGetUserMedia ||
+                    navigator.mozGetUserMedia;
+
+                    if (navigator.getUserMedia) {
+                    navigator.getUserMedia(
+                        {  video: true },
+                        (stream) => {
+                        const video = document.querySelector("video");
+                        video.srcObject = stream;
+                        video.onloadedmetadata = (e) => {
+                            video.play();
+                        };
+                        },
+                        (err) => {
+                        console.error(`The following error occurred: ${err.name}`);
+                        }
+                    );
+                    } else {
+                    console.log("getUserMedia not supported");
+                    }
+					
+					function capture() {
+						var canvas =document.getElementById('canvas');
+						var video =document.getElementById('videoElement');
+
+						canvas.width =380;
+						canvas.height =290;
+
+						canvas.getContext('2d').drawImage(video, 0, 0, 387, 290);
+						document.getElementById().innerHTML =  canvas.toDataURl();
+
+					} 
+					function sauver(){ 
+                             if(navigator.msSaveOrOpenBlob){
+                                    var blobObject=document.getElementById("canvas").msToBlob() 
+                                    window.navigator.msSaveOrOpenBlob(blobObject, "image.png"); 
+                                 }
+                            else{ 
+                                    var canvas = document.getElementById("canvas"); 
+                                    var elem = document.createElement('a'); 
+                                    elem.href = canvas.toDataURL("image/png"); 
+                                     elem.download = "nom.png"; 
+                                     var evt = new MouseEvent("click", { bubbles: true,cancelable: true,view: window,}); 
+                                     elem.dispatchEvent(evt);
+                                 }
+                             }
+							 function prepare_envoi(){
+								var canvas = document.getElementById('canvas');
+								canvas.toBlob(function(blob){envoi(blob)},'images/png');
+							 }
+							 function envoi(blob){
+								console.log(blob.type)
+								var formImage = new FormData();
+								//formImage.append('image',canvas,'image.jpg');
+
+								var ajax = new XMLHttpRequest();
+								ajax.open("POST","../test.php",true);
+								ajax.onreadystatechange=function(){
+									if (ajax.readyState==4 && ajax.status==200){
+										document.getElementById("jaxa").innerHTML+=(ajax.responseText);
+
+									}
+								}
+								ajax.onerror=function(){
+									alert("la reauette a echoue")
+								}
+								ajax.send(formImage);
+								console.log("ok")
+							 }
+		</script>
+	
+</body>
+
+</html>
+
+
